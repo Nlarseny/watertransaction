@@ -1,0 +1,9 @@
+{% extends "watermain/layout.html" %}
+{% block title %}
+Create Listing
+{% endblock %}
+{% block content %}
+<p>This is where the lessor can decide to publish their listing.</p>
+<a href="{% url 'collect_info' %}" class="button">Collect Info</a>
+<a href="{% url 'offers' %}" class="button">Publish</a>
+{% endblock %}

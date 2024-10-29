@@ -1,0 +1,9 @@
+{% extends "watermain/layout.html" %}
+{% block title %}
+Counter Offer
+{% endblock %}
+{% block content %}
+<p>If the lessor chooses to counter, this is where they can do so.</p>
+<a href="{% url 'offers' %}" class="button">Offers</a>
+<a href="{% url 'collect_info' %}" class="button">Send Counter</a>
+{% endblock %}

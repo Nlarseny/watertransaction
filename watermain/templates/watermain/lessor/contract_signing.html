@@ -1,0 +1,9 @@
+{% extends "watermain/layout.html" %}
+{% block title %}
+Contract Signing
+{% endblock %}
+{% block content %}
+<p>This is where the lessor would accept the offer from the lessee and digitally sign the contract.</p>
+<a href="{% url 'offers' %}" class="button">Offers</a>
+<a href="{% url 'contract_signing' %}" class="button">Sign</a>
+{% endblock %}
