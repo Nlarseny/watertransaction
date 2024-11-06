@@ -4,6 +4,9 @@ For intial setup I followed this guide: https://code.visualstudio.com/docs/pytho
 The python environment matters.
 
 
+To do:
+[ ] set up redirects in views.py
+
 Notes:
 tailwindcss?
 
