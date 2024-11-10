@@ -11,16 +11,16 @@ from watermain.models import TransferVariables
 
 
 def submit_info(request):
-    form = LogMessageForm(request.POST or None)
+    form = TransferVariablesForm(request.POST or None)
 
     if request.method == "POST":
         if form.is_valid():
             message = form.save(commit=False)
-            message.log_date = datetime.now()
+            # message.log_date = datetime.now()
             message.save()
             return redirect("home")
     else:
-        return render(request, "watermain/log_message.html", {"form": form})   
+        return render(request, "watermain/lessor/collect_info.html", {"form": form})   
 
 # TEST CODE
 class HomeListView(ListView):

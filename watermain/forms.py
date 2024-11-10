@@ -11,5 +11,5 @@ class LogMessageForm(forms.ModelForm):
 
 class TransferVariablesForm(forms.ModelForm):
     class Meta:
-        model = LogMessage
-        fields = ["message",]# ["price", "amount", "start_date", "end_date",]   # NOTE: the trailing comma is required
+        model = TransferVariables
+        fields = ["price", "amount", "start_date", "end_date",]   # NOTE: the trailing comma is required

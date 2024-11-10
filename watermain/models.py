@@ -22,5 +22,5 @@ class TransferVariables(models.Model):
 
     def __str__(self):
         """Returns a string representation of a message."""
-        date = timezone.localtime(self.log_date)
-        return str('{self.price}' + '&' '{self.amount}' + '&' '{self.start_date}' + '&' '{self.end_date}')
+        string_message = f"{self.price}&{self.amount}&{self.start_date}&{self.end_date}"
+        return string_message
