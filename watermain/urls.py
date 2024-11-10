@@ -23,5 +23,6 @@ urlpatterns = [
     path("offers/", views.offers, name="offers"),
     path("counter_offer/", views.counter_offer, name="counter_offer"),
     path("contract_signing/", views.contract_signing, name="contract_signing"),
+    path("finish/", views.finish, name="finish"),
     path("log/", views.log_message, name="log"),
 ]

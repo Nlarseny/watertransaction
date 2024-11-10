@@ -9,5 +9,10 @@ Contract Signing
     viewer?embedded=true&url='watermain/example.pdf" width="500" height="375"> -->
     <iframe src="{% static 'watermain/example.pdf' %}" width="600" height="400"></iframe>
     <a href="{% url 'offers' %}" class="button">Offers</a>
-    <a href="{% url 'contract_signing' %}" class="button">Sign</a>
+    
+    <form method="POST" class="log-form">
+        <input type="checkbox">I acknowledge that I am signing something away</input>
+    </form>
+    
+    <a href="{% url 'finish' %}" class="button">Sign</a>
 {% endblock %}

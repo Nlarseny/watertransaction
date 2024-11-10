@@ -12,11 +12,10 @@ from watermain.models import TransferVariables
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
-
-import os
 import shutil
 
 def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly Doe"):
+    variables = get_recent_variables()
     doc = SimpleDocTemplate("example.pdf", pagesize=letter)
     styles = getSampleStyleSheet()
 
@@ -30,8 +29,8 @@ def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly 
         styles['BodyText'])
     content.append(paragraph_2)
 
+    # create and move pdf to the static directory
     doc.build(content)
-
     shutil.move("example.pdf", "watermain/static/watermain/example.pdf")
 
     return doc
@@ -122,4 +121,6 @@ def counter_offer(request):
 def contract_signing(request):
     return render(request, "watermain/lessor/contract_signing.html")
 
+def finish(request):
+    return render(request, "watermain/lessor/finish.html")
 
