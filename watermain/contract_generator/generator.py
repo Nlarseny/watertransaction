@@ -28,4 +28,4 @@ def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly 
     return doc
 
 
-contract_builder()
+# contract_builder()

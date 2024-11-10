@@ -6,5 +6,9 @@ Offers
 <p>This is where the lessor can see all current offers.</p>
 <a href="{% url 'create_listing' %}" class="button">Create Listing</a>
 <a href="{% url 'counter_offer' %}" class="button">Counter</a>
-<a href="{% url 'contract_signing' %}" class="button">View Contract</a>
+<!-- <a href="{% url 'contract_signing' %}" class="button">View Contract</a> -->
+<form action="{% url 'make_contract' %}" method="get">
+    {% csrf_token %}
+    <button type="submit" class="save btn btn-default">View Contract</button>
+</form>
 {% endblock %}

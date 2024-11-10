@@ -15,6 +15,8 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("contact/", views.contact, name="contact"),
 
+    path("make_contract/", views.make_contract, name="make_contract"),
+
     #lessor side
     path("collect_info/", views.submit_info, name="collect_info"),
     path("create_listing/", views.create_listing, name="create_listing"),

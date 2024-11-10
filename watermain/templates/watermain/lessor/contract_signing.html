@@ -1,11 +1,13 @@
 {% extends "watermain/layout.html" %}
+{% load static %}
 {% block title %}
 Contract Signing
 {% endblock %}
 {% block content %}
-<p>This is where the lessor would accept the offer from the lessee and digitally sign the contract.</p>
-<embed src="https://drive.google.com/viewerng/
-viewer?embedded=true&url=https://www.dcsa.mil/Portals/128/Documents/eeo/DD-Form-2655_(Fillable).pdf?ver=0KS3ezAoswXVpYqI8U-c7w%3D%3D" width="500" height="375">
-<a href="{% url 'offers' %}" class="button">Offers</a>
-<a href="{% url 'contract_signing' %}" class="button">Sign</a>
+    <p>This is where the lessor would accept the offer from the lessee and digitally sign the contract.</p>
+    <!-- <embed src="https://drive.google.com/viewerng/
+    viewer?embedded=true&url='watermain/example.pdf" width="500" height="375"> -->
+    <iframe src="{% static 'watermain/example.pdf' %}" width="600" height="400"></iframe>
+    <a href="{% url 'offers' %}" class="button">Offers</a>
+    <a href="{% url 'contract_signing' %}" class="button">Sign</a>
 {% endblock %}
