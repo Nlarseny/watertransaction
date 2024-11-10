@@ -9,6 +9,14 @@ from django.views.generic import ListView
 from watermain.forms import TransferVariablesForm
 from watermain.models import TransferVariables
 
+def get_recent_variables():
+    queryset = TransferVariables.objects.last() # a little hokey pokey, make better when there is time and a need (when we add users)
+    price = queryset.price
+    amount = queryset.amount
+    start_date = queryset.start_date
+    end_date = queryset.end_date
+
+    return (price, amount, start_date, end_date)
 
 def submit_info(request):
     form = TransferVariablesForm(request.POST or None)
@@ -58,6 +66,7 @@ def home(request):
     return render(request, "watermain/home.html")
 
 def about(request):
+    get_recent_variables()
     return render(request, "watermain/about.html")
 
 def contact(request):
