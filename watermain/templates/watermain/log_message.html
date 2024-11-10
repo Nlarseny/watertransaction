@@ -1,11 +1,11 @@
 {% extends "watermain/layout.html" %}
 {% block title %}
-    Collect Info
+    Log a message
 {% endblock %}
 {% block content %}
     <form method="POST" class="log-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Submit Information</button>
+        <button type="submit" class="save btn btn-default">Log</button>
     </form>
 {% endblock %}
