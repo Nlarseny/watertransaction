@@ -1,0 +1,490 @@
+.mediaViewInfo {
+    --web-view-name: Home;
+    --web-view-id: Home;
+    --web-scale-on-resize: true;
+    --web-enable-deep-linking: true;
+}
+:root {
+    --web-view-ids: Home;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+#Home {
+    position: absolute;
+    width: 1920px;
+    height: 2214px;
+    background-color: rgba(255,255,255,1);
+    overflow: hidden;
+    --web-view-name: Home;
+    --web-view-id: Home;
+    --web-scale-on-resize: true;
+    --web-enable-deep-linking: true;
+}
+@keyframes fadein {
+
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+#aac {
+    fill: rgba(0,0,0,1);
+    stroke: rgba(112,112,112,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.aac {
+    position: absolute;
+    overflow: visible;
+    width: 527px;
+    height: 298px;
+    left: 106px;
+    top: 1172px;
+}
+#aad {
+    fill: rgba(0,0,0,1);
+    stroke: rgba(112,112,112,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.aad {
+    position: absolute;
+    overflow: visible;
+    width: 474px;
+    height: 298px;
+    left: 681px;
+    top: 1172px;
+}
+#aae {
+    fill: rgba(0,0,0,1);
+    stroke: rgba(112,112,112,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.aae {
+    position: absolute;
+    overflow: visible;
+    width: 651px;
+    height: 298px;
+    left: 1210px;
+    top: 1172px;
+}
+#aaf {
+    border: 0;
+    left: 122px;
+    top: 278px;
+    position: absolute;
+    overflow: visible;
+    width: 700px;
+    height: 21px;
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: rgba(112,112,112,1);
+    text-transform: uppercase;
+}
+#aag {
+    mix-blend-mode: luminosity;
+    border: 0;
+    left: 122px;
+    top: 329px;
+    position: absolute;
+    overflow: visible;
+    width: 501px;
+    height: 94px;
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(112,112,112,1);
+}
+#aah {
+    border: 0;
+    left: 122px;
+    top: 453px;
+    position: absolute;
+    overflow: visible;
+    width: 404px;
+    height: 147px;
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: rgba(112,112,112,1);
+}
+#aai {
+    border: 0;
+    left: 196px;
+    top: 1298px;
+    position: absolute;
+    overflow: visible;
+    width: 378px;
+    height: 147px;
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: rgba(255,255,255,1);
+}
+#aaj {
+    border: 0;
+    left: 787px;
+    top: 1288px;
+    position: absolute;
+    overflow: visible;
+    width: 317px;
+    height: 126px;
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: rgba(255,255,255,1);
+}
+#aak {
+    border: 0;
+    left: 1326px;
+    top: 1288px;
+    position: absolute;
+    overflow: visible;
+    width: 426px;
+    height: 84px;
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: rgba(255,255,255,1);
+}
+#aal {
+    position: absolute;
+    width: 223px;
+    height: 48px;
+    left: 122px;
+    top: 669px;
+    overflow: visible;
+    --web-animation: fadein 0.30000001192092896s ease-out;
+    --web-action-type: page;
+    --web-action-target: Create_Your_Listing.html;
+    cursor: pointer;
+}
+#aam {
+    fill: rgba(0,0,0,1);
+}
+.aam {
+    position: absolute;
+    overflow: visible;
+    width: 223px;
+    height: 48px;
+    left: 0px;
+    top: 0px;
+}
+#aan {
+    border: 0;
+    left: 43px;
+    top: 13px;
+    position: absolute;
+    overflow: visible;
+    width: 139px;
+    white-space: nowrap;
+    line-height: 30px;
+    margin-top: -7px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+}
+#aao {
+    fill: transparent;
+}
+.aao {
+    overflow: hidden;
+    position: absolute;
+    width: 1042px;
+    height: 586px;
+    left: 787px;
+    top: 265px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#aap {
+    mix-blend-mode: luminosity;
+    border: 0;
+    left: 710px;
+    top: 1038px;
+    position: absolute;
+    overflow: visible;
+    width: 501px;
+    height: 47px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(0,0,0,1);
+}
+#aaq {
+    fill: transparent;
+    stroke: rgba(112,112,112,1);
+    stroke-width: 3px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-dasharray: 10;
+    stroke-dashoffset: 0;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.aaq {
+    overflow: visible;
+    position: absolute;
+    width: 1920px;
+    height: 3px;
+    left: 0.5px;
+    top: 944.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#aar {
+    border: 0;
+    left: 122px;
+    top: 1221px;
+    position: absolute;
+    overflow: hidden;
+    width: 501px;
+    height: 47px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(255,255,255,1);
+}
+#aas {
+    border: 0;
+    left: 710px;
+    top: 1221px;
+    position: absolute;
+    overflow: hidden;
+    width: 349px;
+    height: 47px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(255,255,255,1);
+}
+#aat {
+    border: 0;
+    left: 1228px;
+    top: 1217px;
+    position: absolute;
+    overflow: hidden;
+    width: 634px;
+    height: 51px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(255,255,255,1);
+}
+#aau {
+    position: absolute;
+    width: 354px;
+    height: 79px;
+    left: 783px;
+    top: 1583px;
+    overflow: visible;
+    --web-animation: fadein 0.30000001192092896s ease-out;
+    --web-action-type: page;
+    --web-action-target: Create_Your_Listing.html;
+    cursor: pointer;
+}
+#aav {
+    fill: rgba(0,0,0,1);
+}
+.aav {
+    position: absolute;
+    overflow: visible;
+    width: 354px;
+    height: 79px;
+    left: 0px;
+    top: 0px;
+}
+#aaw {
+    border: 0;
+    left: 63px;
+    top: 24px;
+    position: absolute;
+    overflow: visible;
+    width: 235px;
+    white-space: nowrap;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: rgba(255,255,255,1);
+    text-transform: uppercase;
+}
+#aax {
+    position: absolute;
+    width: 1921px;
+    height: 201px;
+    left: -1px;
+    top: 2029px;
+    overflow: visible;
+}
+#aay {
+    fill: rgba(0,0,0,1);
+}
+.aay {
+    position: absolute;
+    overflow: visible;
+    width: 1921px;
+    height: 201px;
+    left: 0px;
+    top: 0px;
+}
+#aaz {
+    border: 0;
+    left: 663px;
+    top: 2144px;
+    position: absolute;
+    overflow: visible;
+    width: 596px;
+    height: 42px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    color: rgba(255,255,255,1);
+}
+#aba {
+    position: absolute;
+    width: 1703px;
+    height: 85px;
+    left: 122px;
+    top: 54px;
+    overflow: visible;
+}
+#abb {
+    border: 0;
+    left: 1186px;
+    top: 42px;
+    position: absolute;
+    overflow: hidden;
+    width: 119px;
+    height: 22px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(112,112,112,1);
+}
+#abc {
+    border: 0;
+    left: 1351px;
+    top: 42px;
+    position: absolute;
+    overflow: hidden;
+    width: 119px;
+    height: 22px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(112,112,112,1);
+}
+#abd {
+    border: 0;
+    left: 1516px;
+    top: 42px;
+    position: absolute;
+    overflow: hidden;
+    width: 119px;
+    height: 22px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(112,112,112,1);
+}
+#abe {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 1681px;
+    top: 42px;
+    overflow: visible;
+}
+#abf {
+    fill: rgba(0,0,0,1);
+}
+.abf {
+    overflow: visible;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#abg {
+    position: absolute;
+    width: 82px;
+    height: 85px;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+}
+#abh {
+    position: absolute;
+    width: 82px;
+    height: 85px;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+}
+#abi {
+    position: absolute;
+    width: 75px;
+    height: 78px;
+    left: 923px;
+    top: 2043px;
+    overflow: visible;
+}
+#abj {
+    position: absolute;
+    width: 75px;
+    height: 78px;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+}
