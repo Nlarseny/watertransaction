@@ -5,13 +5,7 @@ The python environment matters.
 
 
 To do:
-[ ] set up redirects in views.py
 
-Notes:
-tailwindcss?
-
-
-to add a new page, need to add to views, urls, and templates.
 
 
 views.py (that contains the functions that define pages in your web app)

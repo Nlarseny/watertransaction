@@ -4,6 +4,11 @@
     --web-scale-on-resize: true;
     --web-enable-deep-linking: true;
 }
+
+/* Added this to correct zooming issue */
+html {
+    zoom: 71%;
+}
 :root {
     --web-view-ids: Home;
 }
@@ -487,4 +492,9 @@
     left: 0px;
     top: 0px;
     overflow: visible;
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }
