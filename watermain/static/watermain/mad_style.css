@@ -498,3 +498,57 @@ a {
     text-decoration: none;
     color: white;
 }
+
+
+
+
+#collect_info_elements {
+    border: 0;
+    left: 35%;
+    top: 30%;     
+    position: absolute;
+    overflow: visible;
+    width: 400px;
+    height: 126px;
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+
+    padding: 100px;
+}
+input {
+    width: 200%;
+    font-size: 20px;
+    padding: 12px 20px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 4px;
+}
+
+#submit_button {
+    display: block;
+    /* width: 200px;
+    height: 60px; */
+    background: #000000;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+
+    font-size: 20px;
+}
+
+
+
+
+/* .body-content {
+    padding: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
+
+
+

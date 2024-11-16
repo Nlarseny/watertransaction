@@ -1,11 +1,16 @@
 {% extends "watermain/layout.html" %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'watermain/site.css' %}"/>
 {% block title %}
     Collect Info
 {% endblock %}
 {% block content %}
-    <form method="POST" class="log-form">
+<div id="collect_info_elements" margin="auto">
+	<form method="POST" class="log-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Submit Information</button>
+        <button type="submit" class="save btn btn-default" id="submit_button">Post Listing</button>
     </form>
+</div>
+    
 {% endblock %}
