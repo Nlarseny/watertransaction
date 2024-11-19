@@ -16,11 +16,12 @@ class TransferVariables(models.Model):
     # user_id = models.CharField(max_length=200)
     # water_right = models.CharField(max_length=300)
     price = models.PositiveIntegerField()
-    amount = models.PositiveIntegerField()
+    shares = models.PositiveIntegerField()
     start_date = models.CharField(max_length=300)
     end_date = models.CharField(max_length=300)
+    permitted_uses = models.CharField(max_length=300)
 
     def __str__(self):
         """Returns a string representation of a message."""
-        string_message = f"{self.price}&{self.amount}&{self.start_date}&{self.end_date}"
+        string_message = f"{self.price}&{self.amount}&{self.start_date}&{self.end_date}&{self.permitted_uses}"
         return string_message

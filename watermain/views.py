@@ -17,19 +17,20 @@ import shutil
 def get_recent_variables():
     queryset = TransferVariables.objects.last() # a little hokey pokey, make better when there is time and a need (when we add users)
     price = queryset.price
-    amount = queryset.amount
+    shares = queryset.shares
     start_date = queryset.start_date
     end_date = queryset.end_date
+    permitted_uses = queryset.permitted_uses
 
-    return (price, amount, start_date, end_date)
+    return (price, shares, start_date, end_date, permitted_uses)
 
-def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly Doe", months = 0, lessee_price=133):
+def contract_builder(months = 0, shares=111, date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly Doe", lessee_price=133):
     variables = get_recent_variables()
     price = variables[0]
-    amount = variables[1]
+    # shares = variables[1]
     start_date = variables[2]
     end_date = variables[3]
-    permitted_use = "example use blah blah"
+    permitted_use = variables[4]
 
 
     doc = SimpleDocTemplate("example.pdf", pagesize=letter)
@@ -75,7 +76,7 @@ def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly 
 
     content.append(Paragraph("Lessee will pay Lessor $" + 
                              str(lessee_price) + 
-                             " per acre-foot of water used each year. Payment is due by "
+                             " for " + str(shares) + " shares.Payment is due by "
                              + str(date) + 
                              " annually, based on actual water use reported to the Utah Division of Water Rights.", styles['BodyText']))
 
@@ -180,7 +181,7 @@ def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly 
 
 def make_contract(request, months="nope", shares="nope"):
     # variables = get_recent_variables()
-    contract_builder()
+    contract_builder(months, shares)
     print(months, shares)
 
     return render(request, "watermain/lessor/contract_signing.html")
