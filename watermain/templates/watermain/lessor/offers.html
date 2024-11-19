@@ -1110,8 +1110,8 @@
 			</rect>
 		</svg>
 		<div id="abd">
-            <form action="{% url 'make_contract' test=4 %}" method="get">
-                <!-- {% csrf_token %} -->
+            <form action="{% url 'make_contract' months=6 shares=50 %}" method="get">
+                {% csrf_token %}
                 <button type="submit" id="accept">Accept</button>
             </form>
 		</div>
@@ -1122,7 +1122,7 @@
 			</rect>
 		</svg>
 		<div id="abg">
-			<form action="{% url 'make_contract' %}" method="get">
+			<form action="{% url 'make_contract' months=2 shares=20 %}" method="get">
                 {% csrf_token %}
                 <button type="submit" id="accept">Accept</button>
             </form>
@@ -1134,7 +1134,7 @@
 			</rect>
 		</svg>
 		<div id="abj">
-			<form action="{% url 'make_contract' %}" method="get">
+			<form action="{% url 'make_contract' months=4 shares=60 %}" method="get">
                 {% csrf_token %}
                 <button type="submit" id="accept">Accept</button>
             </form>
@@ -1146,7 +1146,7 @@
 			</rect>
 		</svg>
 		<div id="abm">
-			<form action="{% url 'make_contract' %}" method="get">
+			<form action="{% url 'make_contract' months=12 shares=80 %}" method="get">
                 {% csrf_token %}
                 <button type="submit" id="accept">Accept</button>
             </form>
@@ -1234,7 +1234,7 @@
 		<span>4 months</span>
 	</div>
 	<div id="acs">
-		<span>6 months</span>
+		<span>12 months</span>
 	</div>
 	<div id="act">
 		<span>50 Shares</span>
@@ -1246,7 +1246,7 @@
 		<span>60 Shares</span>
 	</div>
 	<div id="acw">
-		<span>50 Shares</span>
+		<span>80 Shares</span>
 	</div>
 	<div id="acx" class="footer">
 		<div id="acy" class="Footer_6">

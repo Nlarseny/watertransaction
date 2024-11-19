@@ -23,7 +23,7 @@ def get_recent_variables():
 
     return (price, amount, start_date, end_date)
 
-def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly Doe", months = 0):
+def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly Doe", months = 0, lessee_price=133):
     variables = get_recent_variables()
     price = variables[0]
     amount = variables[1]
@@ -74,7 +74,7 @@ def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly 
     content.append(Paragraph("3. Payment", styles['BodyText']))
 
     content.append(Paragraph("Lessee will pay Lessor $" + 
-                             str(price) + 
+                             str(lessee_price) + 
                              " per acre-foot of water used each year. Payment is due by "
                              + str(date) + 
                              " annually, based on actual water use reported to the Utah Division of Water Rights.", styles['BodyText']))
@@ -178,10 +178,10 @@ def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly 
 
     return doc
 
-def make_contract(request, test="nope"):
-    variables = get_recent_variables()
+def make_contract(request, months="nope", shares="nope"):
+    # variables = get_recent_variables()
     contract_builder()
-    print(test)
+    print(months, shares)
 
     return render(request, "watermain/lessor/contract_signing.html")
 
