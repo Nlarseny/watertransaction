@@ -14,34 +14,6 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
 import shutil
 
-def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly Doe"):
-    variables = get_recent_variables()
-    doc = SimpleDocTemplate("example.pdf", pagesize=letter)
-    styles = getSampleStyleSheet()
-
-    content = []
-
-    paragraph_1 = Paragraph("WATER RIGHTS LEASE AGREEMENT", styles['Heading1'])
-    content.append(paragraph_1)
-
-    paragraph_2 = Paragraph(
-        "This Water Rights Lease Agreement (\"Agreement\") is made and entered into on " + date + " by and between " + lessor + " (\"Lessor\") and " + lessee + " (\"Lessee\").",
-        styles['BodyText'])
-    content.append(paragraph_2)
-
-    # create and move pdf to the static directory
-    doc.build(content)
-    shutil.move("example.pdf", "watermain/static/watermain/example.pdf")
-
-    return doc
-
-def make_contract(request):
-    variables = get_recent_variables()
-    contract_builder()
-
-    return render(request, "watermain/lessor/contract_signing.html")
-
-
 def get_recent_variables():
     queryset = TransferVariables.objects.last() # a little hokey pokey, make better when there is time and a need (when we add users)
     price = queryset.price
@@ -51,6 +23,168 @@ def get_recent_variables():
 
     return (price, amount, start_date, end_date)
 
+def contract_builder(date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly Doe", months = 0):
+    variables = get_recent_variables()
+    price = variables[0]
+    amount = variables[1]
+    start_date = variables[2]
+    end_date = variables[3]
+    permitted_use = "example use blah blah"
+
+
+    doc = SimpleDocTemplate("example.pdf", pagesize=letter)
+    styles = getSampleStyleSheet()
+
+    content = []
+
+    paragraph_1 = Paragraph("WATER RIGHTS LEASE AGREEMENT", styles['Heading1'])
+    content.append(paragraph_1)
+
+    paragraph_2 = Paragraph(
+        "This Water Rights Lease Agreement (\"Agreement\") is made and entered into on " + date + 
+        " by and between " + lessor + " (\"Lessor\") and " + lessee + " (\"Lessee\").",
+        styles['BodyText'])
+    content.append(paragraph_2)
+
+
+    content.append(Paragraph("RECITALS", styles['BodyText']))
+
+    content.append(Paragraph("WHEREAS, Lessor owns water rights in Utah, as described in Exhibit A;", styles['BodyText']))
+
+    content.append(Paragraph("WHEREAS, Lessee wants to lease these water rights for beneficial use; and", styles['BodyText']))
+ 
+    content.append(Paragraph("WHEREAS, Lessor agrees to lease the water rights to Lessee under the terms below.", styles['BodyText']))
+
+
+    content.append(Paragraph("AGREEMENT", styles['BodyText']))
+
+    content.append(Paragraph("The parties agree as follows:", styles['BodyText']))
+
+    content.append(Paragraph("1. Lease of Water Rights: Lessor leases the water rights to Lessee for the term of this agreement.", styles['BodyText']))
+
+    content.append(Paragraph("2. Term", styles['BodyText']))
+
+    content.append(Paragraph("The term of this lease shall be for a period of " 
+                                 + str(months) + 
+                                 " months, starting on " + start_date + " and ending on " + 
+                                 end_date + ", unless terminated earlier as provided herein. " + 
+                                 "This agreement may be renewed if both parties agree in writing.", styles['BodyText']))
+
+
+    content.append(Paragraph("3. Payment", styles['BodyText']))
+
+    content.append(Paragraph("Lessee will pay Lessor $" + 
+                             str(price) + 
+                             " per acre-foot of water used each year. Payment is due by "
+                             + str(date) + 
+                             " annually, based on actual water use reported to the Utah Division of Water Rights.", styles['BodyText']))
+
+
+    content.append(Paragraph("4. Use of Water Rights", styles['BodyText']))
+
+    content.append(Paragraph("Lessee can only use the water for " + 
+                             permitted_use + 
+                             " as allowed by Utah law and the water rights description in Exhibit A. Lessee may not change how or where the water is used without Lessor's written permission and following the applicable legal requirements.", styles['BodyText']))
+
+
+    content.append(Paragraph("5. Legal Compliance", styles['BodyText']))
+
+    content.append(Paragraph("Lessee must follow all federal, state, and local laws about using these water rights.", styles['BodyText']))
+
+
+    content.append(Paragraph("6. Ownership", styles['BodyText']))
+
+    content.append(Paragraph("Lessor keeps full ownership of the water rights. " + 
+                             "This agreement only gives Lessee the right to use the water, " + 
+                             "not own it. Lessee shall not take any action that may impair " + 
+                             "or encumber Lessor’s ownership of the Water Rights.", styles['BodyText']))
+
+
+    content.append(Paragraph("7. Maintaining Water Rights", styles['BodyText']))
+
+    content.append(Paragraph("Lessor will file necessary reports with the Utah Division of Water " + 
+                             "Rights to keep the water rights valid. Lessee will assist by providing " + 
+                             "any necessary information.", styles['BodyText']))
+
+
+    content.append(Paragraph("8. Change Application", styles['BodyText']))
+
+    content.append(Paragraph("Before Lessee can use the water, Lessor must file and get approval for " + 
+                             "a change application with the Utah State Engineer. The change application " + 
+                             "will allow the water rights to be used as described in Section 4. Lessee will " + 
+                             "help with this process and reimburse Lessor for all costs associated with the " + 
+                             "preparation, filing, prosecution, and any appeals of the change application.", styles['BodyText']))
+
+
+    content.append(Paragraph("9. Default and Termination", styles['BodyText']))
+
+    content.append(Paragraph("Either party may terminate this agreement with 30 days' written notice if the " + 
+                             "other party breaches any term of this Agreement and fails to remedy said breach " + 
+                             "within the 30-day notice period. Upon termination, Lessee shall immediately stop " + 
+                             "use of the water rights.", styles['BodyText']))
+
+
+    content.append(Paragraph("10. Transfer", styles['BodyText']))
+
+    content.append(Paragraph("Neither party may transfer their rights or duties under this agreement without " + 
+                             "the other party's written permission.", styles['BodyText']))
+
+
+    content.append(Paragraph("11. Disputes", styles['BodyText']))
+
+    content.append(Paragraph("In the event there is a legal dispute about this agreement, " + 
+                             "the winning party can recover reasonable attorney fees from the losing party.", styles['BodyText']))
+
+
+    content.append(Paragraph("12. Indemnification", styles['BodyText']))
+
+    content.append(Paragraph("Lessee shall indemnify, defend, and hold harmless Lessor from " + 
+                             "and against any and all claims, damages, liabilities, and expenses " + 
+                             "arising out of or resulting from Lessee's use of the Water Rights.", styles['BodyText']))
+
+
+    content.append(Paragraph("13. Force Majeure", styles['BodyText']))
+
+    content.append(Paragraph("Neither party shall be liable for any delay or failure to perform " + 
+                             "its obligations under this agreement due to causes beyond its " + 
+                             "reasonable control, including but not limited to acts of God, " + 
+                             "natural disasters, or government actions.", styles['BodyText']))
+
+
+    content.append(Paragraph("14. Utah Law ", styles['BodyText']))
+
+    content.append(Paragraph("This agreement follows and will be interpreted according to Utah law.", styles['BodyText']))
+
+
+    content.append(Paragraph("15. Complete Agreement", styles['BodyText']))
+
+    content.append(Paragraph("This document is the entire agreement between the parties " + 
+                             "about leasing these water rights.", styles['BodyText']))
+    
+    content.append(Paragraph("", styles['BodyText']))
+    content.append(Paragraph("", styles['BodyText']))
+    content.append(Paragraph("Signed by:\n", styles['BodyText']))
+
+    content.append(Paragraph("", styles['BodyText']))
+    content.append(Paragraph("\nLESSOR: " + lessor + "\n", styles['BodyText']))
+
+    content.append(Paragraph("", styles['BodyText']))
+    content.append(Paragraph("\nLESSEE: " + lessee + "\n", styles['BodyText']))
+  
+
+    # create and move pdf to the static directory
+    doc.build(content)
+    shutil.move("example.pdf", "watermain/static/watermain/example.pdf")
+
+    return doc
+
+def make_contract(request, test="nope"):
+    variables = get_recent_variables()
+    contract_builder()
+    print(test)
+
+    return render(request, "watermain/lessor/contract_signing.html")
+
 def submit_info(request):
     form = TransferVariablesForm(request.POST or None)
 
@@ -59,7 +193,7 @@ def submit_info(request):
             message = form.save(commit=False)
             # message.log_date = datetime.now()
             message.save()
-            return redirect("create_listing")
+            return redirect("offers")
     else:
         return render(request, "watermain/lessor/collect_info.html", {"form": form})   
 

@@ -1,14 +1,1268 @@
-{% extends "watermain/layout.html" %}
-{% block title %}
-Offers
-{% endblock %}
-{% block content %}
-<p>This is where the lessor can see all current offers.</p>
-<a href="{% url 'create_listing' %}" class="button">Create Listing</a>
-<a href="{% url 'counter_offer' %}" class="button">Counter</a>
-<!-- <a href="{% url 'contract_signing' %}" class="button">View Contract</a> -->
-<form action="{% url 'make_contract' %}" method="get">
-    {% csrf_token %}
-    <button type="submit" class="save btn btn-default">View Contract</button>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List of Offers</title>
+<style id="applicationStylesheet" type="text/css">
+    html {
+        zoom: 71%;
+    }
+	.mediaViewInfo {
+		--web-view-name: List of Offers;
+		--web-view-id: List_of_Offers;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: List_of_Offers;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#List_of_Offers {
+		position: absolute;
+		width: 1920px;
+		height: 1401px;
+		background-color: rgba(255,255,255,1);
+		overflow: hidden;
+		--web-view-name: List of Offers;
+		--web-view-id: List_of_Offers;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	@keyframes fadein {
+	
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	
+	}
+	#aac {
+		position: absolute;
+		width: 1703px;
+		height: 85px;
+		left: 109px;
+		top: 60px;
+		overflow: visible;
+	}
+	#aad {
+		border: 0;
+		left: 1186px;
+		top: 42px;
+		position: absolute;
+		overflow: visible;
+		width: 119px;
+		height: 22px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(112,112,112,1);
+	}
+	#aae {
+		border: 0;
+		left: 1351px;
+		top: 42px;
+		position: absolute;
+		overflow: visible;
+		width: 119px;
+		height: 22px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(112,112,112,1);
+	}
+	#aaf {
+		border: 0;
+		left: 1516px;
+		top: 42px;
+		position: absolute;
+		overflow: visible;
+		width: 119px;
+		height: 22px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(112,112,112,1);
+	}
+	#aag {
+		position: absolute;
+		width: 22px;
+		height: 22px;
+		left: 1681px;
+		top: 42px;
+		overflow: visible;
+	}
+	#aah {
+		fill: rgba(0,0,0,1);
+	}
+	.aah {
+		overflow: visible;
+		position: absolute;
+		width: 22px;
+		height: 22px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#aai {
+		position: absolute;
+		width: 82px;
+		height: 85px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+		--web-animation: fadein 0.30000001192092896s ease-out;
+		--web-action-type: page;
+		--web-action-target: Home.html;
+		cursor: pointer;
+	}
+	#aaj {
+		position: absolute;
+		width: 82px;
+		height: 85px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#aak {
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 3px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.aak {
+		position: absolute;
+		overflow: visible;
+		width: 831px;
+		height: 294px;
+		left: 110px;
+		top: 336px;
+	}
+	#aal {
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 3px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.aal {
+		position: absolute;
+		overflow: visible;
+		width: 831px;
+		height: 294px;
+		left: 1002px;
+		top: 336px;
+	}
+	#aam {
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 3px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.aam {
+		position: absolute;
+		overflow: visible;
+		width: 831px;
+		height: 294px;
+		left: 109px;
+		top: 680px;
+	}
+	#aan {
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 3px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.aan {
+		position: absolute;
+		overflow: visible;
+		width: 831px;
+		height: 294px;
+		left: 1001px;
+		top: 680px;
+	}
+	#aao {
+		position: absolute;
+		width: 52px;
+		height: 52px;
+		left: 176px;
+		top: 366px;
+		overflow: visible;
+	}
+	#aap {
+		fill: rgba(0,0,0,1);
+	}
+	.aap {
+		overflow: visible;
+		position: absolute;
+		width: 52px;
+		height: 52px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#aaq {
+		position: absolute;
+		width: 52px;
+		height: 52px;
+		left: 1068px;
+		top: 366px;
+		overflow: visible;
+	}
+	#aar {
+		fill: rgba(0,0,0,1);
+	}
+	.aar {
+		overflow: visible;
+		position: absolute;
+		width: 52px;
+		height: 52px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#aas {
+		position: absolute;
+		width: 52px;
+		height: 52px;
+		left: 175px;
+		top: 710px;
+		overflow: visible;
+	}
+	#aat {
+		fill: rgba(0,0,0,1);
+	}
+	.aat {
+		overflow: visible;
+		position: absolute;
+		width: 52px;
+		height: 52px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#aau {
+		position: absolute;
+		width: 52px;
+		height: 52px;
+		left: 1067px;
+		top: 710px;
+		overflow: visible;
+	}
+	#aav {
+		fill: rgba(0,0,0,1);
+	}
+	.aav {
+		overflow: visible;
+		position: absolute;
+		width: 52px;
+		height: 52px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#aaw {
+		border: 0;
+		left: 252px;
+		top: 390px;
+		position: absolute;
+		overflow: visible;
+		width: 273px;
+		height: 28px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(0,0,0,1);
+	}
+	#aax {
+		border: 0;
+		left: 1144px;
+		top: 390px;
+		position: absolute;
+		overflow: visible;
+		width: 273px;
+		height: 28px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(0,0,0,1);
+	}
+	#aay {
+		border: 0;
+		left: 251px;
+		top: 734px;
+		position: absolute;
+		overflow: visible;
+		width: 273px;
+		height: 28px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(0,0,0,1);
+	}
+	#aaz {
+		border: 0;
+		left: 1143px;
+		top: 734px;
+		position: absolute;
+		overflow: visible;
+		width: 273px;
+		height: 28px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(0,0,0,1);
+	}
+	#aba {
+		mix-blend-mode: luminosity;
+		border: 0;
+		left: 110px;
+		top: 232px;
+		position: absolute;
+		overflow: visible;
+		width: 501px;
+		height: 47px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 40px;
+		color: rgba(0,0,0,1);
+	}
+	#abb {
+		position: absolute;
+		width: 223px;
+		height: 48px;
+		left: 416px;
+		top: 542px;
+		overflow: visible;
+	}
+	#abc {
+		fill: rgba(0,0,0,1);
+	}
+	.abc {
+		position: absolute;
+		overflow: visible;
+		width: 223px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#abd {
+		border: 0;
+		left: 68px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 89px;
+		white-space: nowrap;
+		line-height: 30px;
+		margin-top: -7px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+    
+	#abe {
+		position: absolute;
+		width: 223px;
+		height: 48px;
+		left: 1308px;
+		top: 542px;
+		overflow: visible;
+	}
+	#abf {
+		fill: rgba(0,0,0,1);
+	}
+	.abf {
+		position: absolute;
+		overflow: visible;
+		width: 223px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#abg {
+		border: 0;
+		left: 68px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 89px;
+		white-space: nowrap;
+		line-height: 30px;
+		margin-top: -7px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#abh {
+		position: absolute;
+		width: 223px;
+		height: 48px;
+		left: 415px;
+		top: 886px;
+		overflow: visible;
+	}
+	#abi {
+		fill: rgba(0,0,0,1);
+	}
+	.abi {
+		position: absolute;
+		overflow: visible;
+		width: 223px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#abj {
+		border: 0;
+		left: 68px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 89px;
+		white-space: nowrap;
+		line-height: 30px;
+		margin-top: -7px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#abk {
+		position: absolute;
+		width: 223px;
+		height: 48px;
+		left: 1307px;
+		top: 886px;
+		overflow: visible;
+		--web-animation: fadein 0.30000001192092896s ease-out;
+		--web-action-type: page;
+		--web-action-target: Pick_an_offer_.html;
+		cursor: pointer;
+	}
+	#abl {
+		fill: rgba(0,0,0,1);
+	}
+	.abl {
+		position: absolute;
+		overflow: visible;
+		width: 223px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#abm {
+		border: 0;
+		left: 68px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 89px;
+		white-space: nowrap;
+		line-height: 30px;
+		margin-top: -7px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+	}
+	#abn {
+		position: absolute;
+		width: 223px;
+		height: 48px;
+		left: 663px;
+		top: 542px;
+		overflow: visible;
+	}
+	#abo {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(0,0,0,1);
+		stroke-width: 3px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.abo {
+		position: absolute;
+		overflow: visible;
+		width: 223px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#abp {
+		border: 0;
+		left: 89px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 47px;
+		white-space: nowrap;
+		line-height: 30px;
+		margin-top: -7px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(0,0,0,1);
+	}
+	#abq {
+		position: absolute;
+		width: 223px;
+		height: 48px;
+		left: 1555px;
+		top: 542px;
+		overflow: visible;
+	}
+	#abr {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(0,0,0,1);
+		stroke-width: 3px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.abr {
+		position: absolute;
+		overflow: visible;
+		width: 223px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#abs {
+		border: 0;
+		left: 89px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 47px;
+		white-space: nowrap;
+		line-height: 30px;
+		margin-top: -7px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(0,0,0,1);
+	}
+	#abt {
+		position: absolute;
+		width: 223px;
+		height: 48px;
+		left: 662px;
+		top: 886px;
+		overflow: visible;
+	}
+	#abu {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(0,0,0,1);
+		stroke-width: 3px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.abu {
+		position: absolute;
+		overflow: visible;
+		width: 223px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#abv {
+		border: 0;
+		left: 89px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 47px;
+		white-space: nowrap;
+		line-height: 30px;
+		margin-top: -7px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(0,0,0,1);
+	}
+	#abw {
+		position: absolute;
+		width: 223px;
+		height: 48px;
+		left: 1554px;
+		top: 886px;
+		overflow: visible;
+	}
+	#abx {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(0,0,0,1);
+		stroke-width: 3px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.abx {
+		position: absolute;
+		overflow: visible;
+		width: 223px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#aby {
+		border: 0;
+		left: 89px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 47px;
+		white-space: nowrap;
+		line-height: 30px;
+		margin-top: -7px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(0,0,0,1);
+	}
+	#abz {
+		position: absolute;
+		width: 68px;
+		height: 71px;
+		left: 408px;
+		top: 431px;
+		overflow: visible;
+	}
+	#aca {
+		position: absolute;
+		width: 68px;
+		height: 71px;
+		left: 1300px;
+		top: 431px;
+		overflow: visible;
+	}
+	#acb {
+		position: absolute;
+		width: 68px;
+		height: 71px;
+		left: 407px;
+		top: 775px;
+		overflow: visible;
+	}
+	#acc {
+		position: absolute;
+		width: 68px;
+		height: 71px;
+		left: 1299px;
+		top: 775px;
+		overflow: visible;
+	}
+	#acd {
+		position: absolute;
+		width: 62px;
+		height: 65px;
+		left: 166px;
+		top: 440px;
+		overflow: visible;
+	}
+	#ace {
+		position: absolute;
+		width: 62px;
+		height: 65px;
+		left: 1058px;
+		top: 440px;
+		overflow: visible;
+	}
+	#acf {
+		position: absolute;
+		width: 62px;
+		height: 65px;
+		left: 165px;
+		top: 784px;
+		overflow: visible;
+	}
+	#acg {
+		position: absolute;
+		width: 62px;
+		height: 65px;
+		left: 1057px;
+		top: 784px;
+		overflow: visible;
+	}
+	#ach {
+		position: absolute;
+		width: 70px;
+		height: 73px;
+		left: 679px;
+		top: 430px;
+		overflow: visible;
+	}
+	#aci {
+		position: absolute;
+		width: 70px;
+		height: 73px;
+		left: 1571px;
+		top: 430px;
+		overflow: visible;
+	}
+	#acj {
+		position: absolute;
+		width: 70px;
+		height: 73px;
+		left: 678px;
+		top: 774px;
+		overflow: visible;
+	}
+	#ack {
+		position: absolute;
+		width: 70px;
+		height: 73px;
+		left: 1570px;
+		top: 774px;
+		overflow: visible;
+	}
+	#acl {
+		border: 0;
+		left: 228px;
+		top: 455px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#acm {
+		border: 0;
+		left: 1120px;
+		top: 455px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#acn {
+		border: 0;
+		left: 227px;
+		top: 799px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#aco {
+		border: 0;
+		left: 1119px;
+		top: 799px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#acp {
+		border: 0;
+		left: 476px;
+		top: 452px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#acq {
+		border: 0;
+		left: 1368px;
+		top: 452px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#acr {
+		border: 0;
+		left: 475px;
+		top: 796px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#acs {
+		border: 0;
+		left: 1367px;
+		top: 796px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#act {
+		border: 0;
+		left: 749px;
+		top: 449px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#acu {
+		border: 0;
+		left: 1641px;
+		top: 449px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#acv {
+		border: 0;
+		left: 748px;
+		top: 793px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#acw {
+		border: 0;
+		left: 1640px;
+		top: 793px;
+		position: absolute;
+		overflow: visible;
+		width: 138px;
+		height: 35px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#acx {
+		position: absolute;
+		width: 1921px;
+		height: 201px;
+		left: 0px;
+		top: 1200px;
+		overflow: visible;
+	}
+	#acy {
+		position: absolute;
+		width: 1921px;
+		height: 201px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#acz {
+		fill: rgba(0,0,0,1);
+	}
+	.acz {
+		position: absolute;
+		overflow: visible;
+		width: 1921px;
+		height: 201px;
+		left: 0px;
+		top: 0px;
+	}
+	#ada {
+		border: 0;
+		left: 664px;
+		top: 115px;
+		position: absolute;
+		overflow: visible;
+		width: 596px;
+		height: 42px;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(255,255,255,1);
+	}
+	#adb {
+		position: absolute;
+		width: 75px;
+		height: 78px;
+		left: 924px;
+		top: 14px;
+		overflow: visible;
+	}
+	#adc {
+		position: absolute;
+		width: 75px;
+		height: 78px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+
+    #accept {
+        font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+        background-color: black;
+		color: rgba(255,255,255,1);
+    }
+</style>
+
+</head>
+<body>
+	<div id="List_of_Offers">
+	<div id="aac" class="header">
+		<div id="aad">
+			<span>Home</span>
+		</div>
+		<div id="aae">
+			<span>About</span>
+		</div>
+		<div id="aaf">
+			<span>Contact</span>
+		</div>
+		<div id="aag" class="Component_1">
+			<svg class="aah" viewBox="0 0 22 22">
+				<path id="aah" d="M 0 22 L 0 19.25034713745117 C 0 16.2247257232666 4.949938297271729 13.74969863891602 11 13.74969863891602 C 17.0500602722168 13.74969863891602 22 16.2247257232666 22 19.25034713745117 L 22 22 L 0 22 Z M 5.499382019042969 5.50062084197998 C 5.499382019042969 2.462620735168457 7.961976051330566 0 11 0 C 14.03678798675537 0 16.49938201904297 2.462620735168457 16.49938201904297 5.50062084197998 C 16.49938201904297 8.537394523620605 14.03678798675537 11.00004482269287 11 11.00004482269287 C 7.961976051330566 11.00004482269287 5.499382019042969 8.537394523620605 5.499382019042969 5.50062084197998 Z">
+				</path>
+			</svg>
+		</div>
+		<div onclick="application.goToTargetView(event)" id="aai" class="roughhh_water_logo_01">
+			<img id="aaj" src="{% static 'watermain/black_icon.png' %}">
+				
+		</div>
+	</div>
+	<svg class="aak">
+		<rect id="aak" rx="25" ry="25" x="0" y="0" width="831" height="294">
+		</rect>
+	</svg>
+	<svg class="aal">
+		<rect id="aal" rx="25" ry="25" x="0" y="0" width="831" height="294">
+		</rect>
+	</svg>
+	<svg class="aam">
+		<rect id="aam" rx="25" ry="25" x="0" y="0" width="831" height="294">
+		</rect>
+	</svg>
+	<svg class="aan">
+		<rect id="aan" rx="25" ry="25" x="0" y="0" width="831" height="294">
+		</rect>
+	</svg>
+	<div id="aao" class="Component_3">
+		<svg class="aap" viewBox="0 0 52 52">
+			<path id="aap" d="M 0 52 L 0 45.50082397460938 C 0 38.3493537902832 11.69985485076904 32.49929046630859 26 32.49929046630859 C 40.30014419555664 32.49929046630859 52 38.3493537902832 52 45.50082397460938 L 52 52 L 0 52 Z M 12.99853992462158 13.00146865844727 C 12.99853992462158 5.820740222930908 18.81921577453613 0 26 0 C 33.17786407470703 0 38.99853897094727 5.820740222930908 38.99853897094727 13.00146865844727 C 38.99853897094727 20.17929840087891 33.17786407470703 26.00010681152344 26 26.00010681152344 C 18.81921577453613 26.00010681152344 12.99853992462158 20.17929840087891 12.99853992462158 13.00146865844727 Z">
+			</path>
+		</svg>
+	</div>
+	<div id="aaq" class="Component_5">
+		<svg class="aar" viewBox="0 0 52 52">
+			<path id="aar" d="M 0 52 L 0 45.50082397460938 C 0 38.3493537902832 11.69985485076904 32.49929046630859 26 32.49929046630859 C 40.30014419555664 32.49929046630859 52 38.3493537902832 52 45.50082397460938 L 52 52 L 0 52 Z M 12.99853992462158 13.00146865844727 C 12.99853992462158 5.820740222930908 18.81921577453613 0 26 0 C 33.17786407470703 0 38.99853897094727 5.820740222930908 38.99853897094727 13.00146865844727 C 38.99853897094727 20.17929840087891 33.17786407470703 26.00010681152344 26 26.00010681152344 C 18.81921577453613 26.00010681152344 12.99853992462158 20.17929840087891 12.99853992462158 13.00146865844727 Z">
+			</path>
+		</svg>
+	</div>
+	<div id="aas" class="Component_4">
+		<svg class="aat" viewBox="0 0 52 52">
+			<path id="aat" d="M 0 52 L 0 45.50082397460938 C 0 38.3493537902832 11.69985485076904 32.49929046630859 26 32.49929046630859 C 40.30014419555664 32.49929046630859 52 38.3493537902832 52 45.50082397460938 L 52 52 L 0 52 Z M 12.99853992462158 13.00146865844727 C 12.99853992462158 5.820740222930908 18.81921577453613 0 26 0 C 33.17786407470703 0 38.99853897094727 5.820740222930908 38.99853897094727 13.00146865844727 C 38.99853897094727 20.17929840087891 33.17786407470703 26.00010681152344 26 26.00010681152344 C 18.81921577453613 26.00010681152344 12.99853992462158 20.17929840087891 12.99853992462158 13.00146865844727 Z">
+			</path>
+		</svg>
+	</div>
+	<div id="aau" class="Component_6">
+		<svg class="aav" viewBox="0 0 52 52">
+			<path id="aav" d="M 0 52 L 0 45.50082397460938 C 0 38.3493537902832 11.69985485076904 32.49929046630859 26 32.49929046630859 C 40.30014419555664 32.49929046630859 52 38.3493537902832 52 45.50082397460938 L 52 52 L 0 52 Z M 12.99853992462158 13.00146865844727 C 12.99853992462158 5.820740222930908 18.81921577453613 0 26 0 C 33.17786407470703 0 38.99853897094727 5.820740222930908 38.99853897094727 13.00146865844727 C 38.99853897094727 20.17929840087891 33.17786407470703 26.00010681152344 26 26.00010681152344 C 18.81921577453613 26.00010681152344 12.99853992462158 20.17929840087891 12.99853992462158 13.00146865844727 Z">
+			</path>
+		</svg>
+	</div>
+	<div id="aaw">
+		<span>User12345</span>
+	</div>
+	<div id="aax">
+		<span>User6543</span>
+	</div>
+	<div id="aay">
+		<span>User5345</span>
+	</div>
+	<div id="aaz">
+		<span>User5678</span>
+	</div>
+	<div id="aba">
+		<span>List of Offers: </span>
+	</div>
+	<div id="abb" class="Normal_Button">
+		<svg class="abc">
+			<rect id="abc" rx="4" ry="4" x="0" y="0" width="223" height="48">
+			</rect>
+		</svg>
+		<div id="abd">
+            <form action="{% url 'make_contract' test=4 %}" method="get">
+                <!-- {% csrf_token %} -->
+                <button type="submit" id="accept">Accept</button>
+            </form>
+		</div>
+	</div>
+	<div id="abe" class="Normal_Button">
+		<svg class="abf">
+			<rect id="abf" rx="4" ry="4" x="0" y="0" width="223" height="48">
+			</rect>
+		</svg>
+		<div id="abg">
+			<form action="{% url 'make_contract' %}" method="get">
+                {% csrf_token %}
+                <button type="submit" id="accept">Accept</button>
+            </form>
+		</div>
+	</div>
+	<div id="abh" class="Normal_Button">
+		<svg class="abi">
+			<rect id="abi" rx="4" ry="4" x="0" y="0" width="223" height="48">
+			</rect>
+		</svg>
+		<div id="abj">
+			<form action="{% url 'make_contract' %}" method="get">
+                {% csrf_token %}
+                <button type="submit" id="accept">Accept</button>
+            </form>
+		</div>
+	</div>
+	<div onclick="application.goToTargetView(event)" id="abk" class="Normal_Button">
+		<svg class="abl">
+			<rect id="abl" rx="4" ry="4" x="0" y="0" width="223" height="48">
+			</rect>
+		</svg>
+		<div id="abm">
+			<form action="{% url 'make_contract' %}" method="get">
+                {% csrf_token %}
+                <button type="submit" id="accept">Accept</button>
+            </form>
+		</div>
+	</div>
+	<div id="abn" class="Normal_Button">
+		<svg class="abo">
+			<rect id="abo" rx="4" ry="4" x="0" y="0" width="223" height="48">
+			</rect>
+		</svg>
+		<div id="abp">
+			<span>Reject</span>
+		</div>
+	</div>
+	<div id="abq" class="Normal_Button">
+		<svg class="abr">
+			<rect id="abr" rx="4" ry="4" x="0" y="0" width="223" height="48">
+			</rect>
+		</svg>
+		<div id="abs">
+			<span>Reject</span>
+		</div>
+	</div>
+	<div id="abt" class="Normal_Button">
+		<svg class="abu">
+			<rect id="abu" rx="4" ry="4" x="0" y="0" width="223" height="48">
+			</rect>
+		</svg>
+		<div id="abv">
+			<span>Reject</span>
+		</div>
+	</div>
+	<div id="abw" class="Normal_Button">
+		<svg class="abx">
+			<rect id="abx" rx="4" ry="4" x="0" y="0" width="223" height="48">
+			</rect>
+		</svg>
+		<div id="aby">
+			<span>Reject</span>
+		</div>
+	</div>
+	<img id="abz" src="{% static 'watermain/clock.png' %}">
+		
+	<img id="aca" src="{% static 'watermain/clock.png' %}">
+		
+	<img id="acb" src="{% static 'watermain/clock.png' %}">
+		
+	<img id="acc" src="{% static 'watermain/clock.png' %}">
+		
+	<img id="acd" src="{% static 'watermain/money.png' %}">
+		
+	<img id="ace" src="{% static 'watermain/money.png' %}">
+		
+	<img id="acf" src="{% static 'watermain/money.png' %}">
+		
+	<img id="acg" src="{% static 'watermain/money.png' %}">
+		
+	<img id="ach" src="{% static 'watermain/cube.png' %}">
+		
+	<img id="aci" src="{% static 'watermain/cube.png' %}">
+		
+	<img id="acj" src="{% static 'watermain/cube.png' %}">
+		
+	<img id="ack" src="{% static 'watermain/cube.png' %}">
+		
+	<div id="acl">
+		<span>Matches</span>
+	</div>
+	<div id="acm">
+		<span>Matches</span>
+	</div>
+	<div id="acn">
+		<span>Matches</span>
+	</div>
+	<div id="aco">
+		<span>Matches</span>
+	</div>
+	<div id="acp">
+		<span>6 months</span>
+	</div>
+	<div id="acq">
+		<span>2 months</span>
+	</div>
+	<div id="acr">
+		<span>4 months</span>
+	</div>
+	<div id="acs">
+		<span>6 months</span>
+	</div>
+	<div id="act">
+		<span>50 Shares</span>
+	</div>
+	<div id="acu">
+		<span>20 Shares</span>
+	</div>
+	<div id="acv">
+		<span>60 Shares</span>
+	</div>
+	<div id="acw">
+		<span>50 Shares</span>
+	</div>
+	<div id="acx" class="footer">
+		<div id="acy" class="Footer_6">
+			<svg class="acz">
+				<rect id="acz" rx="0" ry="0" x="0" y="0" width="1921" height="201">
+				</rect>
+			</svg>
+		</div>
+		<div id="ada">
+			<span>Simplify Your Water Lease: Easier Than a Handshake</span>
+		</div>
+		<div id="adb" class="whiteeee_logo_1_02">
+			<img id="adc" src="{% static 'watermain/white_icon.png' %}">
+				
+		</div>
+	</div>
+</div>
+</body>
+</html>
