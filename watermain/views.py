@@ -14,6 +14,8 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
 import shutil
 
+import datetime
+
 def get_recent_variables():
     queryset = TransferVariables.objects.last() # a little hokey pokey, make better when there is time and a need (when we add users)
     price = queryset.price
@@ -24,7 +26,7 @@ def get_recent_variables():
 
     return (price, shares, start_date, end_date, permitted_uses)
 
-def contract_builder(months = 0, shares=111, date = "1/1/1970", lessor = "Frank Jones", lessee = "Molly Doe", lessee_price=133):
+def contract_builder(months = 0, shares=111, date = str(datetime.date.today()), lessor = "Frank Jones", lessee = "Molly Doe", lessee_price=133):
     variables = get_recent_variables()
     price = variables[0]
     # shares = variables[1]
@@ -171,6 +173,61 @@ def contract_builder(months = 0, shares=111, date = "1/1/1970", lessor = "Frank 
 
     content.append(Paragraph("", styles['BodyText']))
     content.append(Paragraph("\nLESSEE: " + lessee + "\n", styles['BodyText']))
+
+
+    # to see the bottom of the contract
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+    content.append(Paragraph(" ", styles['BodyText']))
+
   
 
     # create and move pdf to the static directory

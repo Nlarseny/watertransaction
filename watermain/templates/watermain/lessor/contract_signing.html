@@ -1,63 +1,42 @@
 {% extends "watermain/layout.html" %}
 {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'watermain/site.css' %}"/>
 {% block title %}
 Contract Signing
 {% endblock %}
 {% block content %}
-    <p>This is where the lessor would accept the offer from the lessee and digitally sign the contract.</p>
-    <!-- <embed src="https://drive.google.com/viewerng/
-    viewer?embedded=true&url='watermain/example.pdf" width="500" height="375"> -->
-    <iframe src="{% static 'watermain/example.pdf' %}" width="600" height="400"></iframe>
-    <a href="{% url 'offers' %}" class="button">Offers</a>
-    
-    <form method="POST" class="log-form">
-        <input type="checkbox">I acknowledge that I am signing something away</input>
-    </form>
-    
-    <a href="{% url 'finish' %}" class="button">Sign</a>
+    <div id="signing_elements" margin="auto">
+        <iframe src="{% static 'watermain/example.pdf' %}" width="1000" height="800"></iframe>
+        <a href="{% url 'offers' %}" class="button">Offers</a>
+
+        <div>
+            <label for="hideButtonCheckbox">
+                <input type="checkbox" id="hideButtonCheckbox" type="checkbox" > I acknowledge that I am signing a binding contract </label>
+            </label>
+        
+            <br><br>
+        
+            <form action="{% url 'finish' %}">
+                <button id="signing_button">Sign</button>
+            </form>
+            
+        
+            <script>
+                // Get references to the checkbox and button elements
+                const checkbox = document.getElementById('hideButtonCheckbox');
+                const button = document.getElementById('signing_button');
+        
+                // Add an event listener to the checkbox to handle changes
+                checkbox.addEventListener('change', function() {
+                    // Toggle the button's visibility based on the checkbox state
+                    if (checkbox.checked == true) {
+                        button.style.display = 'inline';  // Hide the button
+                    } else {
+                        button.style.display = 'none';  // Show the button again
+                    }
+                });
+            </script>
+        
+        </div>
+    </div>
 {% endblock %}
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkbox to Hide Button</title>
-    <style>
-        /* Optional: Add some basic styling for the button */
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-    </style>
-</head>
-<body>
-
-
-    <label for="hideButtonCheckbox">
-        <input type="checkbox" id="hideButtonCheckbox"> Hide the button
-    </label>
-
-    <br><br>
-
-
-    <button id="myButton">Click Me</button>
-
-    <script>
-        // Get references to the checkbox and button elements
-        const checkbox = document.getElementById('hideButtonCheckbox');
-        const button = document.getElementById('myButton');
-
-        // Add an event listener to the checkbox to handle changes
-        checkbox.addEventListener('change', function() {
-            // Toggle the button's visibility based on the checkbox state
-            if (checkbox.checked) {
-                button.style.display = 'none';  // Hide the button
-            } else {
-                button.style.display = 'inline';  // Show the button again
-            }
-        });
-    </script>
-
-</body>
-</html> -->
