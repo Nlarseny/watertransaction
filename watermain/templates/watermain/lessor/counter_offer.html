@@ -1,9 +1,17 @@
 {% extends "watermain/layout.html" %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'watermain/site.css' %}"/>
 {% block title %}
-Counter Offer
+Counter
 {% endblock %}
 {% block content %}
-<p>If the lessor chooses to counter, this is where they can do so.</p>
-<a href="{% url 'offers' %}" class="button">Offers</a>
-<a href="{% url 'collect_info' %}" class="button">Send Counter</a>
+    <div id="signing_elements" margin="auto">
+        <p>Enter counter-offer here:</p>
+        <input type="text" class="square-input">
+        <div>
+            <form action="{% url 'offers' %}">
+                <button id="download_button">Send Counter</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

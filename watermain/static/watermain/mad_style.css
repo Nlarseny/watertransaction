@@ -527,9 +527,55 @@ input {
     border-radius: 4px;
 }
 
+#finish_elements {
+    border: 0;
+    left: 38%;
+    top: 20%;     
+    position: absolute;
+    overflow: visible;
+    width: 1000px;
+    height: 126px;
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+
+    padding: 100px;
+}
+#download_button {
+    padding: 5px 10px;
+    border-radius:5px;
+    text-align: left;
+    font-size: 25px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border:3px solid black;
+}
+
+.square-input {
+    width: 800px;    /* Set the width */
+    height: 100px;   /* Set the height equal to width to make it square */
+    padding: 100;      /* Remove any internal padding */
+    vertical-align: top; /* Align text to the top vertically */
+    line-height: 1.2;
+  }
+
+#menu_button {
+    font-size: 20px;
+    color: rgb(171, 171, 171);
+    background-color: #ffffff;
+}
+
+#counter_input {
+    height: 200;
+    width: 10;
+}
+
 #signing_elements {
     border: 0;
-    left: 22%;
+    left: 16%;
     top: 20%;     
     position: absolute;
     overflow: visible;

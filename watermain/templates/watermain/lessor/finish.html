@@ -1,9 +1,14 @@
 {% extends "watermain/layout.html" %}
 {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'watermain/site.css' %}"/>
 {% block title %}
 Finish
 {% endblock %}
 {% block content %}
-<p>Contract signed</p>
-<a href="{% static 'watermain/example.pdf' %}" download>Download</a>
+<div id="finish_elements" margin="auto">
+    <p>Contract signed!</p>
+    <br>
+    <a id="download_button" href="{% static 'watermain/example.pdf' %}" download="waterleasecontract">Download</a>
+</div>
+
 {% endblock %}

@@ -1023,6 +1023,21 @@
         background-color: black;
 		color: rgba(255,255,255,1);
     }
+
+	#counter {
+        font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+        background-color: rgb(255, 255, 255);
+		color: rgb(0, 0, 0);
+    }
+
+	#menu_button {
+		font-size: 20px;
+		color: rgb(171, 171, 171);
+		background-color: #ffffff;
+	}
 </style>
 
 </head>
@@ -1030,13 +1045,19 @@
 	<div id="List_of_Offers">
 	<div id="aac" class="header">
 		<div id="aad">
-			<span>Home</span>
+			<form action="{% url 'home' %}">
+                <button id="menu_button">Home</button>
+            </form>
 		</div>
 		<div id="aae">
-			<span>About</span>
+			<form action="{% url 'home' %}">
+                <button id="menu_button">About</button>
+            </form>
 		</div>
 		<div id="aaf">
-			<span>Contact</span>
+			<form action="{% url 'home' %}">
+                <button id="menu_button">Contact</button>
+            </form>
 		</div>
 		<div id="aag" class="Component_1">
 			<svg class="aah" viewBox="0 0 22 22">
@@ -1045,7 +1066,9 @@
 			</svg>
 		</div>
 		<div onclick="application.goToTargetView(event)" id="aai" class="roughhh_water_logo_01">
-			<img id="aaj" src="{% static 'watermain/black_icon.png' %}">
+			<a href="{% url 'home' %}">
+				<img id="aaj" src="{% static 'watermain/black_icon.png' %}">
+			</a>
 				
 		</div>
 	</div>
@@ -1158,7 +1181,10 @@
 			</rect>
 		</svg>
 		<div id="abp">
-			<span>Reject</span>
+			<form action="{% url 'counter_offer' %}" method="get">
+                {% csrf_token %}
+                <button type="submit" id="counter">Counter</button>
+            </form>
 		</div>
 	</div>
 	<div id="abq" class="Normal_Button">
@@ -1167,7 +1193,10 @@
 			</rect>
 		</svg>
 		<div id="abs">
-			<span>Reject</span>
+			<form action="{% url 'counter_offer' %}" method="get">
+                {% csrf_token %}
+                <button type="submit" id="counter">Counter</button>
+            </form>
 		</div>
 	</div>
 	<div id="abt" class="Normal_Button">
@@ -1176,7 +1205,10 @@
 			</rect>
 		</svg>
 		<div id="abv">
-			<span>Reject</span>
+			<form action="{% url 'counter_offer' %}" method="get">
+                {% csrf_token %}
+                <button type="submit" id="counter">Counter</button>
+            </form>
 		</div>
 	</div>
 	<div id="abw" class="Normal_Button">
@@ -1185,7 +1217,10 @@
 			</rect>
 		</svg>
 		<div id="aby">
-			<span>Reject</span>
+			<form action="{% url 'counter_offer' %}" method="get">
+                {% csrf_token %}
+                <button type="submit" id="counter">Counter</button>
+            </form>
 		</div>
 	</div>
 	<img id="abz" src="{% static 'watermain/clock.png' %}">

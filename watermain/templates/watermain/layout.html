@@ -9,14 +9,22 @@
 
 <body>
     <div id="aba" class="header">
-		<div id="abb">
-			<span>Home</span>
-		</div>
+        
+        <div id="abb">
+            <form action="{% url 'home' %}">
+                <button id="menu_button">Home</button>
+            </form>
+        </div>
+        
 		<div id="abc">
-			<span>About</span>
+            <form action="{% url 'home' %}">
+                <button id="menu_button">About</button>
+            </form>
 		</div>
 		<div id="abd">
-			<span>Contact</span>
+            <form action="{% url 'home' %}">
+                <button id="menu_button">Contact</button>
+            </form>
 		</div>
 		<div id="abe" class="Component_1">
 			<svg class="abf" viewBox="0 0 22 22">
@@ -25,7 +33,9 @@
 			</svg>
 		</div>
 		<div id="abg" class="roughhh_water_logo_01">
-			<img id="abh" src="{% static 'watermain/black_icon.png' %}" >
+            <a href="{% url 'home' %}">
+                <img id="abh" src="{% static 'watermain/black_icon.png' %}" >
+            </a>
 		</div>
 	</div>
 
