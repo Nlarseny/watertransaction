@@ -13,8 +13,27 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
 import shutil
+import os 
+from django.core.files.storage import FileSystemStorage
 
 import datetime
+
+from pathlib import Path
+
+import boto3
+
+def upload_bucket():
+    session = boto3.Session(
+        aws_access_key_id='AKIA2HVQ5LINIDF5O4U2',
+        aws_secret_access_key='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',
+    )
+    s3 = session.resource('s3')
+
+    # Filename - File to upload
+    # Bucket - Bucket to upload to (the top level directory under AWS S3)
+    # Key - S3 object name (can contain subdirectories). If not specified then file_name is used
+    s3.meta.client.upload_file(Filename=str(Path(__file__).resolve().parent.parent) + "/media/example.pdf", Bucket='lawxbucket', Key='contract.pdf', ExtraArgs={'ContentType': "application/pdf"})
+
 
 def get_recent_variables():
     queryset = TransferVariables.objects.last() # a little hokey pokey, make better when there is time and a need (when we add users)
@@ -232,7 +251,13 @@ def contract_builder(months = 0, shares=111, date = str(datetime.date.today()), 
 
     # create and move pdf to the static directory
     doc.build(content)
-    shutil.move("example.pdf", "watermain/static/watermain/example.pdf")
+    shutil.move("example.pdf", str(Path(__file__).resolve().parent.parent) + "/media/example.pdf")
+    # dir_path = os.path.dirname(os.path.realpath(__file__))
+    # print(dir_path)
+
+
+    upload_bucket()
+
 
     return doc
 

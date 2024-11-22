@@ -1,12 +1,13 @@
 {% extends "watermain/layout.html" %}
 {% load static %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'watermain/site.css' %}"/>
 {% block title %}
 Contract Signing
 {% endblock %}
 {% block content %}
     <div id="signing_elements" margin="auto">
-        <iframe src="{% static 'watermain/example.pdf' %}" width="1200" height="800"></iframe>
+        <iframe src="https://lawxbucket.s3.us-east-2.amazonaws.com/contract.pdf"  width="1200" height="800"></iframe>
         <a href="{% url 'offers' %}" class="button">Offers</a>
 
         <div>

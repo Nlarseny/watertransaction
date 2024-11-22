@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os 
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'watermain',
+    'storages',
 
 ]
 
@@ -121,7 +122,33 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'static_collected'
 
+# Define the base URL for serving media files
+# MEDIA_URL = '/media/'
+
+# Specify the directory where media files are stored
+# MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'watermain/static'),
+# ]
+
+AWS_ACCESS_KEY_ID = 'AKIA2HVQ5LINIDF5O4U2'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'lawxbucket'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_LOCATION = 'media'
+MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# https://lawxbucket.s3.amazonaws.com/lawxbucket/contract.pdf
+
+DEFAULT_FILE_STORAGE = 'mysite.storage_backends.MediaStorage'  # <-- here is where we reference it
