@@ -24,8 +24,8 @@ import boto3
 
 def upload_bucket():
     session = boto3.Session(
-        aws_access_key_id='AKIA2HVQ5LINIDF5O4U2',
-        aws_secret_access_key='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',
+        aws_access_key_id='hahaha',
+        aws_secret_access_key='hahaha',
     )
     s3 = session.resource('s3')
 
